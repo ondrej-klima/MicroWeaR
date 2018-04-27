@@ -6,9 +6,7 @@
 #' @return Ico.object: class Ico image with the selected working area
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
-Warea.Ico<-
-function (image.ico, sizes = c(200, 400, 600)) 
-{
+Warea.Ico<-function (image.ico, sizes = c(200, 400, 600)) {
   x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
   plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, xlab = "", 
        ylab = "")

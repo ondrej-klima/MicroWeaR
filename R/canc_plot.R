@@ -5,8 +5,7 @@
 #' @param big_matrix matrix: a matrix with stored coordinates (4) of the sampled marks (coordinates 1 and 2 for the lenght; coordinates 3 and 4 for the width)
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
-canc_plot<-function (image.ico, big_matrix) 
-{
+canc_plot<-function (image.ico, big_matrix) {
   plot_Ico(image.ico$image, xpos = 0, ypos = 0)
   rect(image.ico$work_area[[1]], image.ico$work_area[[2]], 
        image.ico$work_area[[3]], image.ico$work_area[[4]], border = "red", 

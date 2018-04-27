@@ -8,8 +8,7 @@
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
 
-samp.traces<-function (image.ico, cexp = 0.5, lwdp = cexp/10) 
-{
+samp.traces<-function (image.ico, cexp = 0.5, lwdp = cexp/10) {
   graphics.off()
   plot_Ico(image.ico$image, xpos = 0, ypos = 0)
   rect(image.ico$work_area[[1]], image.ico$work_area[[2]], 

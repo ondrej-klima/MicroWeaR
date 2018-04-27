@@ -10,8 +10,7 @@
 #' @return "posteriori" character vector: classified scars after running the check function
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
-mw.check<-function (image.ico, big_matrix, type_traces, vector=NULL) 
-{
+mw.check<-function (image.ico, big_matrix, type_traces, vector=NULL) {
   types <- c("Fi.Scr", "Co.Scr", "Sm.Pit", "Lg.Pit")
   types_traces_o <- type_traces
   graphics.off()
