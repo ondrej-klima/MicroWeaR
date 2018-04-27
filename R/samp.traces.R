@@ -1,3 +1,13 @@
+#' samp.traces
+#'
+#' This function allows to record the marks in an Ico class image through an interactive plot.
+#' @param image.ico Ico.object: Ico class
+#' @param cexp numeric: symbol size
+#' @param lwdp numeric: line width
+#' @return matrix: a matrix with stored coordinates (4) of the sampled marks (coordinates 1 and 2 for the lenght; coordinates 3 and 4 for the width)
+#' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
+#' @export
+
 samp.traces<-function (image.ico, cexp = 0.5, lwdp = cexp/10) 
 {
   graphics.off()

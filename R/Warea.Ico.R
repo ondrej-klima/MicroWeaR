@@ -1,3 +1,11 @@
+#' Warea.Ico
+#'
+#' Select a working area of a class Ico image through an interactive plot. The operator selects the center of the working area and its dimensions.
+#' @param image.ico Ico.object: class Ico image
+#' @param sizes numeric vector: side of the working area (in micron)
+#' @return Ico.object: class Ico image with the selected working area
+#' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
+#' @export
 Warea.Ico<-
 function (image.ico, sizes = c(200, 400, 600)) 
 {

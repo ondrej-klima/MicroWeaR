@@ -1,3 +1,15 @@
+#' mw.check
+#'
+#' Check through an interactive multi-plot the classification provided by the autom_class function. Before runnin output.Ico with the a posteriori classification, remember to run again the cross.parallel function with the updated scars classifications.
+#' @param image.ico Ico.object: class Ico image
+#' @param big_matrix matrix: a matrix with stored coordinates (4) of the sampled marks (coordinates 1 and 2 for the lenght; coordinates 3 and 4 for the width)
+#' @param type_traces character vector: classified scars types
+#' @param vector numeric: which scars needs to be rechecked
+#' @return Ico.object: class Ico image
+#' @return "priori" character vector: classified scars before running the check function
+#' @return "posteriori" character vector: classified scars after running the check function
+#' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
+#' @export
 mw.check<-function (image.ico, big_matrix, type_traces, vector=NULL) 
 {
   types <- c("Fi.Scr", "Co.Scr", "Sm.Pit", "Lg.Pit")
