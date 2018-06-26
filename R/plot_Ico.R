@@ -10,9 +10,9 @@
 #' \dontrun{
 #' # A. brevirostris case-study
 #' #load image
-#' data("C_el_pic")
+#' data("A_br_pic")
 #' #plot image
-#' plot_Ico(C_el_pic)
+#' plot_Ico(A_br_pic)
 #' # C. elaphus eostephanoceros case-study
 #' #load image
 #' data("C_el_pic")
@@ -22,15 +22,15 @@
 #' @export
 
 
- plot_Ico<-function(image.ico,xpos=820,ypos=0){
-  width<-image.ico$xlim
-  height<-image.ico$ylim
-  windows(width=(image.ico$xlim[2]-image.ico$xlim[1]),
-          height = (image.ico$ylim[2]-image.ico$ylim[1]),xpos=xpos,ypos=ypos,
-          rescale="fit")
+ plot_Ico<-function (image.ico, xpos = 820, ypos = 0) 
+{
 
-  plot(NA,xlim=c(image.ico$xlim[1],image.ico$xlim[2]),
-       ylim=c(image.ico$ylim[1],image.ico$ylim[2]),axes=F)
-  rasterImage(image.ico$image, image.ico$res[2], image.ico$res[1], 0, 0)
+  width <- image.ico$xlim
+  height <- image.ico$ylim
+  x11(width = (image.ico$xlim[2] - image.ico$xlim[1]), height = (image.ico$ylim[2] - 
+                                                                   image.ico$ylim[1]), xpos = xpos, ypos = ypos)
+  plot(NA, xlim = c(image.ico$xlim[1], image.ico$xlim[2]), 
+       ylim = c(image.ico$ylim[1], image.ico$ylim[2]), axes = F,xaxt='n',yaxt='n',ann=FALSE)
+  rasterImage(image.ico$image, image.ico$res[2], image.ico$res[1], 
+              0, 0)
 }
-

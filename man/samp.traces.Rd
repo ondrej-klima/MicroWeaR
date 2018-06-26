@@ -4,7 +4,7 @@
 \alias{samp.traces}
 \title{samp.traces}
 \usage{
-samp.traces(image.ico, cexp = 0.5, lwdp = cexp/10)
+samp.traces(image.ico, cexp = 0.5, lwdp = NULL)
 }
 \arguments{
 \item{image.ico}{Ico.object: Ico class}

@@ -5,7 +5,7 @@
 \title{scale_Ico}
 \usage{
 scale_Ico(image.ico, xpos = 820, ypos = 0, types = "n", cols = "red",
-  cexs = max(image.ico$res)/10, pchs = 3)
+  cexs = NULL, pchs = 3)
 }
 \arguments{
 \item{image.ico}{Ico.object: class Ico image}

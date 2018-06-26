@@ -23,9 +23,9 @@ Plot Ico class image. Set the matrix containing the marks coordinates in the sca
 \dontrun{
 # A. brevirostris case-study
 #load image
-data("C_el_pic")
+data("A_br_pic")
 #plot image
-plot_Ico(C_el_pic)
+plot_Ico(A_br_pic)
 # C. elaphus eostephanoceros case-study
 #load image
 data("C_el_pic")
