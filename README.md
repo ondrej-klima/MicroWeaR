@@ -8,5 +8,6 @@ install.packages("devtools")
 devtools::install_github("MicroWeaR/MicroWeaR",local=FALSE)
 ```
 MicroWeaR mailing list: https://groups.google.com/forum/#!forum/microwear
+
 Subscription: https://groups.google.com/forum/#!forum/microwear/join
 
