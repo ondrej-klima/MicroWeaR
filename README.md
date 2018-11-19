@@ -7,6 +7,22 @@ To install the Development version (beta) of *MicroWeaR* R-package from Github u
 install.packages("devtools")
 devtools::install_github("MicroWeaR/MicroWeaR",local=FALSE)
 ```
+
+If running the previous lines the MicroWeaR installing fails, try this code:
+
+```{r} 
+install.packages("devtools")
+library("devtools")
+install.packages("zoom")
+library(zoom)
+install.packages("RANN")
+library(RANN)
+install_github("MicroWeaR/MicroWeaR",local=FALSE)
+library(MicroWeaR)
+```
+
+
+
 MicroWeaR mailing list: https://groups.google.com/forum/#!forum/microwear
 
 Subscription: https://groups.google.com/forum/#!forum/microwear/join
