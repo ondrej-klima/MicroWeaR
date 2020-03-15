@@ -8,18 +8,28 @@
 #' @param cols character: symbol color
 #' @param cexs vector: symbol size
 #' @param pchs numeric: symbol to use
+#' @param sounds logical: if FALSE sounds are silences
+#' @param delay numeric: specify seconds after that all devices will be closed
 #' @return Ico.object: class Ico scaled image (based on the provided metric reference)
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
 
 
-scale_Ico<-function (image.ico, xpos = 820, ypos = 0, types = "n", cols = "red", 
-          cexs = NULL, pchs = 3) 
+scale_Ico<-function (image.ico, xpos = 0, ypos = 0, types = "n", cols = "red", 
+          cexs = NULL, pchs = 3, sounds = FALSE,delay=3) 
 {
+
+  if(sounds == FALSE){
+  options(locatorBell = FALSE)
+  }
+  if(sounds == TRUE){
+  options(locatorBell = TRUE)
+  }
+
   if (is.null(cexs) == TRUE) {
     cexs <- 1
   }
-  plot_Ico(image.ico)
+  plot_Ico(image.ico, xpos=xpos,ypos=ypos)
   print("Select two points for the scale factor")
   scale_p <- NULL
   scale_p_t <- locator(n = 1, type = "n", col = cols, cex = cexs, 
@@ -44,6 +54,13 @@ scale_Ico<-function (image.ico, xpos = 820, ypos = 0, types = "n", cols = "red",
   image.ico$xlim <- image.ico$xlim * dist_scale_p
   image.ico$ylim <- image.ico$ylim * dist_scale_p
   image.ico$scale_factor <- dist_scale_p
+  Sys.sleep(delay)
+  howmanydevices<-length(dev.list())
+  replicate(howmanydevices,dev.off())
   return(image.ico)
-  graphics.off()
+
+    if(sounds == FALSE){
+  options(locatorBell = TRUE)
+  }
+ 
 }

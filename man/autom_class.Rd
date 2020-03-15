@@ -4,8 +4,14 @@
 \alias{autom_class}
 \title{autom_class}
 \usage{
-autom_class(big_matrix, image.ico, Pit_Scr = 4, Sm.Lg_Pit = 8,
-  Fi.Co_Scr = 3, cexp = NULL)
+autom_class(
+  big_matrix,
+  image.ico,
+  Pit_Scr = 4,
+  Sm.Lg_Pit = 8,
+  Fi.Co_Scr = 3,
+  cexp = NULL
+)
 }
 \arguments{
 \item{big_matrix}{matrix: a matrix with stored the coordinates (4) of the microwears}

@@ -29,7 +29,7 @@ mw.check<-function (image.ico, big_matrix, type_traces, vector=NULL) {
                                                           4), 2], pch = 4, col = 2, cex = 1, lwd = 2)
     points(big_matrix[[i]][c(3, 4), 1], big_matrix[[i]][c(3, 
                                                           4), 2], col = 2, lwd = 1, type = "l")
-    x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
+    x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
     plot(NA, xlim = c(0, 20), ylim = c(-5, 10), axes = F, 
          xlab = "", ylab = "")
     points(c(0, 7), c(9, 9), type = "l", lty = 3, lwd = 2)
@@ -40,10 +40,10 @@ mw.check<-function (image.ico, big_matrix, type_traces, vector=NULL) {
     points(3.5, -5, pch = 15, lty = 2, cex = 4, col = "blue")
     text(15, -5, labels = "zoom (+/-)")
     dev.set(dev.prev())
-    x11(xpos = 1100, ypos = 540, width = 4.5, height = 2.5)
+    x11(xpos = -1, ypos = -1, width = 4.5, height = 2.5)
     plot(NA, xlim = c(0, 3.5), ylim = c(0, 1.5), axes = F, 
          xlab = "", ylab = "")
-    text(1.5, 1, labels = type_traces[i], cex = 4, col = "red")
+    text(1.5, 1, labels = type_traces[i], cex = 3, col = "red")
     dev.set(dev.prev())
     fix <- NULL
     fix <- locator(n = 1, type = "n", col = "red", cex = 8, 

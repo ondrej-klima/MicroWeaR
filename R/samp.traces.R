@@ -4,12 +4,21 @@
 #' @param image.ico Ico.object: Ico class
 #' @param cexp numeric: symbol size
 #' @param lwdp numeric: line width
+#' @param sounds logical: if FALSE sounds are silences
+#' @param delay numeric: specify seconds after that all devices will be closed
 #' @return matrix: a matrix with stored coordinates (4) of the sampled marks (coordinates 1 and 2 for the lenght; coordinates 3 and 4 for the width)
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @export
 
-samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL) 
+samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL, sounds = FALSE, delay=3) 
 {
+  if(sounds == FALSE){
+  options(locatorBell = FALSE)
+  }
+  if(sounds == TRUE){
+  options(locatorBell = TRUE)
+  }
+
   if(is.null(lwdp)==TRUE){
     lwdp<-cexp/10
   }
@@ -18,7 +27,7 @@ samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL)
   rect(image.ico$work_area[[1]], image.ico$work_area[[2]], 
        image.ico$work_area[[3]], image.ico$work_area[[4]], border = "red", 
        lwd = 2)
-  x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
+  x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
   plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, xlab = "", 
        ylab = "")
   points(rep(1, 5)[-c(2, 4)], seq(7.5, 1, length = 5)[-c(2, 
@@ -35,7 +44,7 @@ samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL)
   if (sel == 1) {
     j <- j + 1
     dev.off()
-    x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
+    x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
     plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
          xlab = "", ylab = "")
     points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], pch = c(17, 
@@ -50,7 +59,7 @@ samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL)
     j <- j + 1
     dev.off()
     dev.set(dev.prev())
-    x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
+    x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
     plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
          xlab = "", ylab = "")
     points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], pch = c(17, 
@@ -65,7 +74,86 @@ samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL)
   j <- 1
   sel <- 1
   big_matrix <- list()
-  while (sel != 3) {
+  while (sel %!in% c(3)) {
+    if (sel == 2){
+      graphics.off()
+      big_matrix <- big_matrix[-length(big_matrix)]
+      j <- j
+      x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
+      plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
+           xlab = "", ylab = "")
+      points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], pch = c(17, 
+                                                                 19, 4, 15), col = c(3, "orange", 2, 4), cex = 3, 
+             lwd = 5)
+      text(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], paste(" ", 
+                                                             c("next", "cancel", "stop", "zoom (+/-)")), pos = 4, 
+           cex = 1.5)
+      canc_plot(image.ico,big_matrix)
+      dev.set(dev.prev())
+      fix <- NULL
+      fix <- locator(n = 1, type = "n", col = "red", cex = 8, pch = 3, 
+                     bg = "red")
+      sel <- which.min(abs(fix$y - seq(7.5, 1, length = 5)[-4]))
+      dev.set(dev.prev())
+    }
+    if (sel == 4) {
+      j <- j + 1
+      replicate(length(dev.list()), dev.off()) 
+      x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
+      plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
+           xlab = "", ylab = "")
+      points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], pch = c(17, 
+                                                                 19, 4, 15), col = c(3, "orange", 2, 4), cex = 3, 
+             lwd = 5)
+      text(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], paste(" ", 
+                                                             c("next", "cancel", "stop", "zoom (+/-)")), pos = 4, 
+           cex = 1.5)
+      canc_plot(image.ico,NULL)
+      zm()
+      for (i in 1:length(big_matrix)) {
+        points(big_matrix[[i]][c(1, 2), 1], big_matrix[[i]][c(1, 
+                                                              2), 2], pch = 4, col = 2, cex = 0.5, lwd = 0.5/10)
+        points(big_matrix[[i]][c(1, 2), 1], big_matrix[[i]][c(1, 
+                                                              2), 2], col = 2, lwd = 1, type = "l")
+        points(big_matrix[[i]][c(3, 4), 1], big_matrix[[i]][c(3, 
+                                                              4), 2], pch = 4, col = 2, cex = 0.5, lwd = 0.5/10)
+        points(big_matrix[[i]][c(3, 4), 1], big_matrix[[i]][c(3, 
+                                                              4), 2], col = 2, lwd = 1, type = "l")
+      }
+      dev.set(dev.prev())
+      fix <- NULL
+      fix <- locator(n = 1, type = "n", col = "red", cex = 8, pch = 3, 
+                     bg = "red")
+      sel <- which.min(abs(fix$y - seq(7.5, 1, length = 5)[-4]))
+      dev.set(dev.prev())
+      
+      if(sel==3){
+        replicate(length(dev.list()), dev.off()) 
+      break}
+      if (sel == 2){
+        graphics.off()
+        big_matrix <- big_matrix[-length(big_matrix)]
+        j <- j
+        x11(xpos = -1, ypos = 0, width = 3.5, height = 5)
+        plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
+             xlab = "", ylab = "")
+        points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], pch = c(17, 
+                                                                   19, 4, 15), col = c(3, "orange", 2, 4), cex = 3, 
+               lwd = 5)
+        text(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], paste(" ", 
+                                                               c("next", "cancel", "stop", "zoom (+/-)")), pos = 4, 
+             cex = 1.5)
+        canc_plot(image.ico,big_matrix)
+        dev.set(dev.prev())
+        fix <- NULL
+        fix <- locator(n = 1, type = "n", col = "red", cex = 8, pch = 3, 
+                       bg = "red")
+        sel <- which.min(abs(fix$y - seq(7.5, 1, length = 5)[-4]))
+        dev.set(dev.prev())
+      }
+      
+      
+    }
     fix_n_x <- NULL
     fix_n_y <- NULL
     for (i in 1:4) {
@@ -96,27 +184,17 @@ samp.traces<-function (image.ico, cexp = 0.5, lwdp = NULL)
       j <- j + 1
       dev.set(dev.prev())
     }
-    if (sel == 2) {
-      j <- j
-      dev.set(dev.prev())
-      graphics.off()
-      x11(xpos = 1200, ypos = 0, width = 3.5, height = 5)
-      plot(NA, xlim = c(0, 20), ylim = c(0, 10), axes = F, 
-           xlab = "", ylab = "")
-      points(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], 
-             pch = c(17, 19, 4, 15), col = c(3, "orange", 
-                                             2, 4), cex = 3, lwd = 5)
-      text(rep(1, 5)[-4], seq(7.5, 1, length = 5)[-4], 
-           paste(" ", c("next", "cancel", "stop", "zoom (+/-)")), 
-           pos = 4, cex = 1.5)
-      big_matrix <- big_matrix[-length(big_matrix)]
-      canc_plot(image.ico, big_matrix)
+  }
+  
+  if(sel==3){
+    Sys.sleep(delay)
+replicate(length(dev.list()), dev.off()) 
     }
-    if (sel == 4) {
-      j <- j + 1
-      dev.set(dev.prev())
-      zm()
-    }
+ 
+  if(sounds == FALSE){
+  options(locatorBell = TRUE)
   }
   return(big_matrix)
 }
+
+

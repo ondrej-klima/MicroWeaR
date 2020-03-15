@@ -4,12 +4,16 @@
 \alias{Warea.Ico}
 \title{Warea.Ico}
 \usage{
-Warea.Ico(image.ico, sizes = c(200, 400, 600))
+Warea.Ico(image.ico, sizes = c(200, 400, 600), sounds = FALSE, delay = 3)
 }
 \arguments{
 \item{image.ico}{Ico.object: class Ico image}
 
 \item{sizes}{numeric vector: side of the working area (in micron)}
+
+\item{sounds}{logical: if FALSE sounds are silences}
+
+\item{delay}{numeric: specify seconds after that all devices will be closed}
 }
 \value{
 Ico.object: class Ico image with the selected working area

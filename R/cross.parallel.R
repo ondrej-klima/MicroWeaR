@@ -2,8 +2,8 @@
 #'
 #' Detect pairs of scratches which are parallel and/or that cross each other.
 #' @param big_matrix matrix: a matrix with stored coordinates (4) of the sampled marks (coordinates 1 and 2 for the lenght; coordinates 3 and 4 for the width)
-#' @param image.ico Ico.object: class Ico image
 #' @param Type character: scars type
+#' @param image.ico Ico.object: Ico class
 #' @return numeric: matrix with number of pairs of parallel and/or scratches that cross each other
 #' @author Antonio Profico, Flavia Strani, Pasquale Raia, Daniel DeMiguel
 #' @examples
