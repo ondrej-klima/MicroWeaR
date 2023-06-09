@@ -41,12 +41,12 @@
       A<-Scratch_list[[combinazioni[,i][1]]][1,]
       B<-Scratch_list[[combinazioni[,i][1]]][4,]
 
-      if(A==B){
+      if(identical(A,B)){
         if(which(A==B)==1){
           A[1]=A[1]*1.0001}
       }
 
-      if(A==B){
+      if(identical(A,B)){
         if(which(A==B)==2){
           B[1]=B[1]*1.0001}
       }
@@ -57,12 +57,12 @@
       b<-A[2]-A[1]*slope
       C<-Scratch_list[[combinazioni[,i][2]]][1,]
       D<-Scratch_list[[combinazioni[,i][2]]][4,]
-      if(C==D){
+      if(identical(C,D)){
         if(which(C==D)==1){
           C[1]<-C[1]*1.0001}
       }
 
-      if(C==D){
+      if(identical(C,D)){
         if(which(C==D)==2){
           D[1]<-D[1]*1.0001}
       }
