@@ -90,6 +90,14 @@
       range_y_1<-range(Scratch_list[[combinazioni[,i][1]]][,2])
       range_x_2<-range(Scratch_list[[combinazioni[,i][2]]][,1])
       range_y_2<-range(Scratch_list[[combinazioni[,i][2]]][,2])
+      
+      if(is.na(Result_x)) {
+        next
+      }
+      
+      if(is.na(Result_y)) {
+        next
+      }
 
       if(((Result_x>min(range_x_1)&Result_x<max(range_x_1))&
           (Result_x>min(range_x_2)&Result_x<max(range_x_2))&

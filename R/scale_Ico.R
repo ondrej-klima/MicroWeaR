@@ -49,7 +49,7 @@ scale_Ico<-function (image.ico, xpos = 0, ypos = 0, types = "n", cols = "red",
   dist_scale_p <- length_scale/dist_scale_p
   image.ico$res <- image.ico$res * dist_scale_p
   image.ico$unit <- "micron"
-  image.ico$area <- image.ico$res * dist_scale_p
+  image.ico$area <- image.ico$area * dist_scale_p
   image.ico$zoom <- max(image.ico$res) * dist_scale_p
   image.ico$xlim <- image.ico$xlim * dist_scale_p
   image.ico$ylim <- image.ico$ylim * dist_scale_p
